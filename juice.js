@@ -1,5 +1,5 @@
 function sayHello() {
-    alert("Hola, muchacho");
+  alert("Holo");
 }
 
 sayHello();

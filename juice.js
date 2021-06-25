@@ -1,7 +1,20 @@
 let tablero = document.querySelector(".tablero"),
     arregloTablas = [],
     btnPlayerOne = document.querySelector("#playerOne"),
-    btnPlayerTwo = document.querySelector("#playerTwo");
+    btnPlayerTwo = document.querySelector("#playerTwo"),
+    arregloVic = [];
+
+// Arreglos de Victoria
+const arregloVictorias = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+];
 
 // Función de Fábrica
 const players = (name, simbolo) => {
@@ -25,33 +38,32 @@ btnPlayerTwo.addEventListener("click", () => {
     console.log(jugadorTwo);
 });
 
-let arregloVic = [];
 // Dibujar el tablero en la página
+//TODO: Necesitamos hacer coincidir una cadena de texto en el arreglo que va marcando el jugador
 for (let i = 0; i < 9; i++) {
     let div = document.createElement("div");
     div.setAttribute("class", "cajasTablero");
     div.addEventListener("click", () => {
         div.textContent = "X";
         arregloVic.push(i);
-        console.log(arregloVic);
+        if (
+            arregloVic.sort().join() === arregloVictorias[0].join() ||
+            arregloVic.sort().join() === arregloVictorias[1].join() ||
+            arregloVic.sort().join() === arregloVictorias[2].join() ||
+            arregloVic.sort().join() === arregloVictorias[3].join() ||
+            arregloVic.sort().join() === arregloVictorias[4].join() ||
+            arregloVic.sort().join() === arregloVictorias[5].join() ||
+            arregloVic.sort().join() === arregloVictorias[6].join() ||
+            arregloVic.sort().join() === arregloVictorias[7].sort().join()
+        ) {
+            console.log("Win");
+            arregloVic = [];
+        }
     });
     tablero.appendChild(div);
     arregloTablas.push(i);
 }
 
-// Arreglos de Victoria
-const arregloVictorias = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-];
-
-console.log(arregloTablas);
 // NOTE: Analizar el siguiente código para imprimir en pantalla los simbolos de cada jugador
 
 // const writeToDOM = (selector, message) => {

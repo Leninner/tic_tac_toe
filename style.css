@@ -78,7 +78,12 @@
 }
 
 .cajasTablero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 134px;
     height: 134px;
     background: blue;
+    font-size: 39px;
+    color: white;
 }

@@ -4,7 +4,7 @@ let tablero = document.querySelector(".tablero"),
     btnPlayerTwo = document.querySelector("#playerTwo"),
     arregloVic = [];
 
-// Arreglos de Victoria
+// Casos posibles de victoria
 const arregloVictorias = [
     [0, 1, 2],
     [3, 4, 5],
@@ -16,12 +16,12 @@ const arregloVictorias = [
     [2, 4, 6],
 ];
 
-// Función de Fábrica
+// Función de Fábrica para crear jugadores
 const players = (name, simbolo) => {
     return { name, simbolo };
 };
 
-// Añadir el nombre de jugadores
+// Añadir el nombre de jugadores con función de fábrica
 btnPlayerOne.addEventListener("click", () => {
     let jugadorOne = players(
         document.querySelector("#namePlayerOne").value,

@@ -1,8 +1,11 @@
-//TODO: Hacer una función para crear jugadores con nombres personalizados
+const reinicio = document.querySelector(".reinicio");
+reinicio.addEventListener("click", () => {
+    window.location.reload();
+});
 
 // player factory function
-const createPlayer = (name, marker) => {
-    return { name, marker };
+const createPlayer = (name, marca) => {
+    return { name, marca };
 };
 
 // gameboard object
@@ -25,24 +28,24 @@ const gameBoard = (() => {
     // add event listeners on each square
     Array.from(squares.children).forEach((square, index) => {
         square.addEventListener("click", () => {
-            // display active player marker
-            square.classList.add(game.activePlayer.marker);
-            square.setAttribute("data", game.activePlayer.marker);
+            // display active player marca
+            square.classList.add(game.activePlayer.marca);
+            square.setAttribute("data", game.activePlayer.marca);
             // update array value to be that of active player
-            board[index] = game.activePlayer.marker;
+            board[index] = game.activePlayer.marca;
             // remove event listener from the marked index
             square.style.pointerEvents = "none";
             // update remainingSpots
             game.remainingSpots -= 1;
             // check winner: if all 3 values within any of these conditions are ===...
-            game.checkWinner();
+            game.comprobarGanador();
             // check remaining spots
-            if (game.winnerDeclared == false) {
+            if (game.declaradorDeVictoria == false) {
                 if (game.remainingSpots > 0) {
-                    game.alertNextPlayer();
-                    game.nextPlayer();
+                    game.alertaDeSiguienteJugador();
+                    game.siguienteJugador();
                 } else if (game.remainingSpots == 0) {
-                    game.declareTie();
+                    game.declararEmpate();
                 }
             }
         });
@@ -57,12 +60,12 @@ const gameBoard = (() => {
 // game object
 const game = (() => {
     // declare players
-    const playerOne = createPlayer("Lenin", "X"),
-        playerTwo = createPlayer("Mathias", "O");
+    const playerOne = createPlayer("Naranja", "bolt"),
+        playerTwo = createPlayer("Amarillo", "heart");
 
     // starting point
     let activePlayer = playerOne;
-    let winnerDeclared = false;
+    let declaradorDeVictoria = false;
     let remainingSpots = 9;
 
     // selectors
@@ -82,49 +85,47 @@ const game = (() => {
     ];
 
     // comprobar ganador
-    function checkWinner() {
+    function comprobarGanador() {
         condicionesDeVictoria.forEach((item) => {
             // [0, 1, 2, 3, 4, 5, 6, 7]
             if (
-                gameBoard.board[item[0]] === this.activePlayer.marker &&
-                gameBoard.board[item[1]] === this.activePlayer.marker &&
-                gameBoard.board[item[2]] === this.activePlayer.marker
+                gameBoard.board[item[0]] === this.activePlayer.marca &&
+                gameBoard.board[item[1]] === this.activePlayer.marca &&
+                gameBoard.board[item[2]] === this.activePlayer.marca
             ) {
-                subtext.innerHTML = `<b>${this.activePlayer.name} wins!</b>`;
-                this.winnerDeclared = true;
+                subtext.textContent = `${this.activePlayer.name} ganó esta ronda! Es realmente bueno!`;
+                this.declaradorDeVictoria = true;
             }
         });
     }
 
     // alert next player
-    function alertNextPlayer() {
+    function alertaDeSiguienteJugador() {
         this.activePlayer === playerOne
             ? (playerName.textContent = playerTwo.name)
             : (playerName.textContent = playerOne.name);
     }
 
     // next player
-    function nextPlayer() {
+    function siguienteJugador() {
         this.activePlayer === playerOne
             ? (this.activePlayer = playerTwo)
             : (this.activePlayer = playerOne);
-        console.log("nextPlayer() function ran");
-        console.log("active player: " + activePlayer.name);
     }
 
     // declare tie
-    function declareTie() {
-        subtext.innerHTML = "Juego empatado";
+    function declararEmpate() {
+        subtext.textContent = "¡Esto es un Empate!";
     }
 
     // return
     return {
         activePlayer,
         remainingSpots,
-        checkWinner,
-        alertNextPlayer,
-        nextPlayer,
-        declareTie,
-        winnerDeclared,
+        comprobarGanador,
+        alertaDeSiguienteJugador,
+        siguienteJugador,
+        declararEmpate,
+        declaradorDeVictoria,
     };
 })();

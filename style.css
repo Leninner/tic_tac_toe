@@ -11,8 +11,8 @@
     justify-content: center;
     width: 100%;
     height: 150px;
-    background-color: brown;
-    border-bottom: 3px solid yellow;
+    background-color: #264653;
+    border-bottom: 3px solid #2a9d8f;
 }
 
 .header h1 {
@@ -22,44 +22,44 @@
     font-style: italic;
 }
 
+.header h1:hover {
+    cursor: pointer;
+}
+
 /* Caja para Turnos */
 .turnos {
     width: 650px;
     height: 150px;
-    background-color: brown;
+    background-color: #2a9d8f;
     margin: 0 auto;
-    margin-top: 45px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 600;
+    color: #264653;
+}
+
+.subtext {
+    text-align: center;
 }
 
 /* Caja de juegos */
 .game {
     display: flex;
-    margin-top: 45px;
-    justify-content: space-between;
-}
-
-/* Puntaje Jugador Uno */
-.puntajePlayerOne {
-    width: 250px;
-    height: 200px;
-    background-color: burlywood;
-}
-
-/* Puntaje Jugador Dos */
-.puntajePlayerTwo {
-    width: 250px;
-    height: 200px;
-    background-color: cornflowerblue;
+    margin-top: 30px;
+    justify-content: center;
 }
 
 /* Tablero de Juego */
 .tablero {
     width: 417px;
     height: 417px;
-    background: yellow;
+    background: #264653;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 7px;
+    grid-gap: 1px;
 }
 
 .cajasTablero {
@@ -68,7 +68,60 @@
     align-items: center;
     width: 134px;
     height: 134px;
-    background: blue;
+    background: #2a9d8f;
     font-size: 39px;
     color: white;
+}
+
+.cajasTablero:hover {
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    margin: 50px;
+}
+
+.footer a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #264653;
+}
+
+.footer a:hover {
+    color: #2a9d8f;
+    cursor: pointer;
+}
+
+/* Marcadores de los jugadores */
+
+.heart {
+    background-color: #e9c46a;
+}
+.bolt {
+    background-color: #e76f51;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 25px;
+}
+
+input {
+    border-style: none;
+    width: 150px;
+    height: 50px;
+    background-color: #2a9d8f;
+    font-size: 20px;
+    font-weight: 600;
+    color: #264653;
+}
+
+input:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 12px #264653;
 }

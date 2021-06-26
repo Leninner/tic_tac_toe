@@ -125,3 +125,89 @@ input:hover {
     cursor: pointer;
     box-shadow: 2px 2px 12px #264653;
 }
+
+/* Responsive */
+@media only screen and (max-width: 900px) {
+    .header {
+        text-align: center;
+        width: 100%;
+        height: 75px;
+        background-color: #264653;
+        border-bottom: 3px solid #2a9d8f;
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 25px;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    .turnos {
+        width: 250px;
+        height: 50px;
+        background-color: #2a9d8f;
+        margin: 0 auto;
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: #264653;
+    }
+
+    .subtext {
+        text-align: center;
+    }
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        margin-top: 15px;
+    }
+
+    input {
+        border-style: none;
+        width: 100px;
+        height: 30px;
+        background-color: #2a9d8f;
+        font-size: 15px;
+        font-weight: 600;
+        color: #264653;
+    }
+
+    .game {
+        margin-top: 15px;
+    }
+
+    .tablero {
+        width: 250px;
+        height: 250px;
+        background: #264653;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+    }
+
+    .cajasTablero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 82.5px;
+        height: 82.5px;
+        background: #2a9d8f;
+        font-size: 39px;
+        color: white;
+    }
+
+    .heart {
+        background-color: #e9c46a;
+    }
+    .bolt {
+        background-color: #e76f51;
+    }
+}
